@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - GameKeys</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo"><a href="index.html">GameKeys</a></div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="all_games.html">Товары</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html" class="active">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-sun"></i> <i class="fas fa-moon" style="display: none;"></i>
+                </button>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="contact-section section">
+            <div class="container">
+                <h1 class="text-center">Свяжитесь с нами</h1>
+                <p class="text-center">У вас есть вопросы, предложения или нужна помощь? Мы всегда готовы помочь!</p>
+
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Ваше имя:</label>
+                        <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Ваш Email:</label>
+                        <input type="email" id="email" name="email" required placeholder="Введите ваш Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Тема:</label>
+                        <input type="text" id="subject" name="subject" required placeholder="Тема вашего сообщения">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Ваше сообщение:</label>
+                        <textarea id="message" name="message" rows="7" required placeholder="Напишите ваше сообщение здесь..."></textarea>
+                    </div>
+                    <button type="submit" class="btn">Отправить сообщение</button>
+                </form>
+
+                <div class="contact-info">
+                    <h3>Наши контакты:</h3>
+                    <p><i class="fas fa-envelope"></i> Email: <a href="mailto:support@gamekeys.com">support@gamekeys.com</a></p>
+                    <p><i class="fas fa-phone-alt"></i> Телефон: <a href="tel:+77771234567">+7 (777) 123-45-67 (Пн-Пт, 9:00-18:00)</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Адрес: Ул. Игровая 1, Город Будущего, Страна Геймеров</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 GameKeys. Все права защищены.</p>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>

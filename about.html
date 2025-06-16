@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас - GameKeys</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo"><a href="index.html">GameKeys</a></div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Игры</a></li>
+                    <li><a href="#">Акции</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-sun"></i> <i class="fas fa-moon" style="display: none;"></i>
+                </button>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" style="display: none;">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="about-section section">
+            <div class="container">
+                <h2>О GameKeys</h2>
+                <p style="max-width: 800px; margin: 0 auto 50px; text-align: center; color: var(--text-color);">
+                    GameKeys — это ваш надежный источник лицензионных ключей к самым горячим играм на всех платформах. Мы верим, что каждый геймер заслуживает легкого доступа к любимым играм без переплат. Наша миссия — предоставить вам широкий выбор, лучшие цены и безупречный сервис.
+                </p>
+
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 40px;">
+                    <div style="background-color: var(--bg-dark-secondary); backdrop-filter: blur(8px); padding: 30px; border-radius: var(--border-radius-medium); border: 1px solid var(--border-glass); box-shadow: 0 4px 15px var(--shadow-soft); flex: 1; min-width: 280px; max-width: 45%;">
+                        <i class="fas fa-gem" style="font-size: 3em; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;"></i>
+                        <h3 style="font-size: 1.6em; margin-bottom: 15px;">Лучшие Цены</h3>
+                        <p style="color: var(--text-muted);">Мы постоянно отслеживаем рынок, чтобы предложить вам самые выгодные предложения.</p>
+                    </div>
+                    <div style="background-color: var(--bg-dark-secondary); backdrop-filter: blur(8px); padding: 30px; border-radius: var(--border-radius-medium); border: 1px solid var(--border-glass); box-shadow: 0 4px 15px var(--shadow-soft); flex: 1; min-width: 280px; max-width: 45%;">
+                        <i class="fas fa-truck" style="font-size: 3em; background: var(--gradient-secondary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;"></i>
+                        <h3 style="font-size: 1.6em; margin-bottom: 15px;">Моментальная Доставка</h3>
+                        <p style="color: var(--text-muted);">Получите ваш ключ мгновенно после покупки на ваш email.</p>
+                    </div>
+                     <div style="background-color: var(--bg-dark-secondary); backdrop-filter: blur(8px); padding: 30px; border-radius: var(--border-radius-medium); border: 1px solid var(--border-glass); box-shadow: 0 4px 15px var(--shadow-soft); flex: 1; min-width: 280px; max-width: 45%;">
+                        <i class="fas fa-shield-alt" style="font-size: 3em; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;"></i>
+                        <h3 style="font-size: 1.6em; margin-bottom: 15px;">Надежность и Безопасность</h3>
+                        <p style="color: var(--text-muted);">Мы гарантируем подлинность всех ключей и безопасность ваших данных.</p>
+                    </div>
+                     <div style="background-color: var(--bg-dark-secondary); backdrop-filter: blur(8px); padding: 30px; border-radius: var(--border-radius-medium); border: 1px solid var(--border-glass); box-shadow: 0 4px 15px var(--shadow-soft); flex: 1; min-width: 280px; max-width: 45%;">
+                        <i class="fas fa-headset" style="font-size: 3em; background: var(--gradient-secondary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;"></i>
+                        <h3 style="font-size: 1.6em; margin-bottom: 15px;">Круглосуточная Поддержка</h3>
+                        <p style="color: var(--text-muted);">Наша команда всегда готова помочь с любыми вопросами.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 GameKeys. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <div class="custom-notification"></div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина - GameKeys</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-theme="dark">
+    <header class="header">
+        <div class="container">
+            <div class="logo"><a href="index.html">GameKeys</a></div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Игры</a></li>
+                    <li><a href="#">Акции</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-sun"></i> <i class="fas fa-moon" style="display: none;"></i>
+                </button>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="cart-section section">
+            <div class="container">
+                <h2>Ваша Корзина</h2>
+                <div class="cart-items" id="cart-items-container">
+                    </div>
+
+                <div class="cart-summary">
+                    <h3>Итог заказа</h3>
+                    <p>Подытог: <span id="subtotal-price">$0.00</span></p>
+                    <p>Доставка: <span id="cart-shipping">$5.00</span></p>
+                    <p class="total-price">Всего: <span id="total-price">$5.00</span></p>
+                    <a href="checkout.html" class="btn" style="width: 100%; margin-top: 25px;" id="checkout-btn">Оформить заказ</a>
+                    <button class="btn btn-danger" style="width: 100%; margin-top: 15px;" id="clear-cart-btn">Очистить корзину</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 GameKeys. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <div class="custom-notification"></div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

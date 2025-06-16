@@ -1,0 +1,1406 @@
+/* css/style.css - ENHANCED DESIGN with MORE "Subtle Depth & Interactive Glow" & Glassmorphism */
+
+/* --- Color Palette and Fonts (Dark Theme - DEFAULT) --- */
+:root {
+    --bg-dark-primary: #0A0A0F; /* Deep charcoal / near black */
+    --bg-dark-secondary: #1A1A20; /* Slightly lighter for elements */
+    --bg-glass-dark: rgba(26, 26, 32, 0.75); /* For glassmorphism effect (less transparent) */
+    --text-light: #E0E0E0;      /* Main light text */
+    --text-muted: #A0A0A0;      /* Subdued text */
+    --gradient-primary: linear-gradient(90deg, #8A2BE2, #FF00FF); /* Darker Purple to Bright Magenta */
+    --gradient-secondary: linear-gradient(90deg, #1E90FF, #32CD32); /* Dodger Blue to Lime Green */
+    --button-text: #0A0A0F;     /* Dark text for vibrant buttons */
+    --border-glass: rgba(255, 255, 255, 0.15); /* Slightly more visible border for glass elements */
+    --shadow-soft: rgba(0, 0, 0, 0.7); /* Even stronger shadow for depth */
+    --shadow-strong: rgba(0, 0, 0, 0.9); /* Very strong shadow for pop-out effects */
+
+    --accent-gold: #FFD700; /* For stars and subtle highlights */
+    --accent-green: #00FF8C; /* Bright green for prices */
+
+    --border-radius-small: 8px; /* Slightly larger radius */
+    --border-radius-medium: 16px; /* Larger radius for main blocks */
+    --transition-speed: 0.4s ease-in-out; /* Slower, smoother transitions */
+
+    /* Common */
+    --text-color: var(--text-light);
+    --background-color: var(--bg-dark-primary);
+    --secondary-bg-color: var(--bg-dark-secondary);
+    --border-color: var(--border-glass);
+    --shadow-color: var(--shadow-soft);
+
+    /* NEW: For glow effects */
+    --glow-strength-primary: 0 0 25px rgba(138, 43, 226, 0.6); /* Purple glow */
+    --glow-strength-secondary: 0 0 25px rgba(30, 144, 255, 0.6); /* Blue glow */
+    --subtle-gradient-overlay: linear-gradient(135deg, rgba(138, 43, 226, 0.05), rgba(255, 0, 255, 0.05)); /* For subtle background on glass elements */
+}
+
+/* --- Light Theme Variables --- */
+body[data-theme="light"] {
+    --background-color: #F0F2F5; /* Light grey */
+    --secondary-bg-color: #FFFFFF; /* White */
+    --bg-glass-dark: rgba(255, 255, 255, 0.85); /* Less transparent for light theme, now truly white-glass */
+    --text-color: #333333;       /* Dark text */
+    --text-muted: #666666;       /* Medium grey text */
+    --button-text: #FFFFFF;      /* White text for vibrant buttons */
+    --border-glass: rgba(0, 0, 0, 0.15); /* Darker border for light theme glass elements */
+    --shadow-soft: rgba(0, 0, 0, 0.25); /* Stronger shadow in light theme */
+    --shadow-strong: rgba(0, 0, 0, 0.4); /* Even stronger shadow in light theme */
+
+    /* Corrected gradients for light theme to be darker and visible */
+    --gradient-primary: linear-gradient(90deg, #6A0DAD, #C800C8); /* Purple to Magenta (kept vibrant for buttons) */
+    --gradient-secondary: linear-gradient(90deg, #007ACC, #00A040); /* Darker Blue to Darker Green */
+
+    /* NEW: For glow effects in light theme - less intense but visible */
+    --glow-strength-primary: 0 0 15px rgba(106, 13, 173, 0.2); /* Muted purple glow */
+    --glow-strength-secondary: 0 0 15px rgba(0, 122, 204, 0.2); /* Muted blue glow */
+    --subtle-gradient-overlay: linear-gradient(135deg, rgba(30, 144, 255, 0.05), rgba(50, 205, 50, 0.05)); /* Slightly more visible overlay */
+
+    /* Ensure specific elements have better contrast */
+    .logo a {
+        background: linear-gradient(90deg, #333333, #666666); /* Darker gradient for logo in light theme */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .nav a.active {
+        background: var(--gradient-primary); /* Use primary gradient for active link, as it's often vibrant */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* Заголовки h1, h2, h3 - теперь стилизуются через CSS, а не инлайново */
+    h1, h2, h3 {
+        background: linear-gradient(90deg, #333333, #666666); /* Темный градиент для лучшей видимости по умолчанию */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* Специальные заголовки, если нужно использовать secondary gradient */
+    .contact-form h3,
+    .review-section h3 {
+        background: var(--gradient-secondary); /* Используем темный secondary gradient */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    /* Иконки в about и contact, которые были плохо видны */
+    .contact-info i,
+    .about-feature-item i {
+        background: var(--gradient-secondary); /* Использование скорректированного темного secondary gradient */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .game-card-content h3 a:hover {
+        background: var(--gradient-primary); /* Keep vibrant hover for game titles */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .theme-toggle {
+        background-color: var(--secondary-bg-color); /* Ensure background is secondary color */
+        color: var(--text-color); /* Ensure icon color is readable */
+    }
+    .theme-toggle:hover {
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1), 0 5px 15px var(--shadow-strong); /* Darker hover glow for light theme */
+    }
+
+    .quantity-control {
+        background-color: var(--secondary-bg-color); /* Light background for input controls */
+        box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+    .quantity-control input {
+        background-color: transparent;
+        color: var(--text-color);
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="password"],
+    .form-group input[type="number"],
+    .form-group textarea {
+        background-color: var(--secondary-bg-color); /* Light background for form inputs */
+        box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        color: var(--text-color); /* Ensure text color is dark */
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+        background-color: var(--secondary-bg-color);
+        box-shadow: var(--glow-strength-primary), inset 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer {
+        box-shadow: 0 4px 15px var(--shadow-soft); /* Lighter shadow for footer in light theme */
+        border-top: 1px solid var(--border-glass);
+    }
+}
+
+
+/* --- Global Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden; /* Prevent horizontal scroll from shadows */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px; /* Increased padding */
+}
+
+a {
+    color: var(--gradient-primary); /* Default link color from gradient */
+    text-decoration: none;
+    transition: all var(--transition-speed);
+}
+
+a:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px); /* Slight lift */
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    background: var(--gradient-primary);
+    color: var(--button-text);
+    padding: 16px 35px; /* More padding */
+    border-radius: var(--border-radius-small);
+    text-align: center;
+    font-weight: 700;
+    transition: all var(--transition-speed);
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.15em; /* Slightly larger text */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 6px 20px var(--shadow-soft); /* Stronger default shadow */
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%); /* White inner glow */
+    transition: width 0.5s ease-out, height 0.5s ease-out, opacity 0.5s ease-out;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    opacity: 0;
+    z-index: -1;
+}
+
+.btn:hover {
+    transform: translateY(-7px); /* More pronounced lift */
+    box-shadow: var(--glow-strength-primary), 0 15px 40px var(--shadow-strong); /* Combined glow and strong shadow */
+    filter: brightness(1.1); /* Subtle brightness */
+}
+
+.btn:hover::before {
+    width: 250%; /* Larger glow area */
+    height: 250%;
+    opacity: 0.2; /* More visible glow */
+}
+
+/* Вторичная кнопка */
+.btn-secondary {
+    background: var(--gradient-secondary);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.btn-secondary:hover {
+    box-shadow: var(--glow-strength-secondary), 0 15px 40px var(--shadow-strong);
+}
+
+/* Кнопка Danger */
+.btn-danger {
+    background: linear-gradient(90deg, #DC143C, #FF4500); /* Crimson to Orange-Red */
+    color: white;
+    box-shadow: 0 6px 20px rgba(220, 20, 60, 0.4);
+}
+.btn-danger:hover {
+    box-shadow: 0 0 25px rgba(220, 20, 60, 0.6), 0 15px 40px var(--shadow-strong);
+}
+
+
+/* --- Header --- */
+.header {
+    background-color: var(--secondary-bg-color);
+    padding: 22px 0; /* More padding */
+    box-shadow: 0 6px 25px var(--shadow-strong); /* Stronger header shadow */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all var(--transition-speed);
+    border-bottom: 1px solid var(--border-glass);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px; /* Added gap */
+}
+
+.logo a {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2em; /* Slightly larger logo */
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: filter var(--transition-speed), transform var(--transition-speed);
+}
+
+.logo a:hover {
+    filter: brightness(1.3);
+    transform: scale(1.03); /* Subtle zoom effect */
+}
+
+.nav ul {
+    display: flex;
+    gap: 35px; /* Increased gap */
+}
+
+.nav a {
+    color: var(--text-color);
+    font-weight: 500;
+    position: relative;
+    padding: 8px 0; /* More padding */
+    transition: all var(--transition-speed);
+}
+
+.nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px; /* Slightly lower */
+    width: 0;
+    height: 3px; /* Thicker underline */
+    background: var(--gradient-primary);
+    transition: width var(--transition-speed);
+}
+
+.nav a:hover::after,
+.nav a.active::after {
+    width: 100%;
+}
+
+.nav a.active {
+    color: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: var(--gradient-primary);
+    font-weight: 600; /* More prominent for active link */
+}
+
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Increased gap */
+}
+
+.theme-toggle {
+    background: var(--secondary-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 45px; /* Larger icon button */
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.3em; /* Larger icon */
+    color: var(--text-color);
+    transition: all var(--transition-speed);
+    box-shadow: 0 2px 10px var(--shadow-soft);
+}
+
+.theme-toggle:hover {
+    background-color: var(--border-color);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2), 0 5px 15px var(--shadow-strong); /* Subtle white glow and strong shadow */
+    transform: scale(1.08);
+}
+
+.theme-toggle .fa-sun { color: #FFD700; }
+.theme-toggle .fa-moon { color: #ADD8E6; }
+
+
+.cart-icon {
+    position: relative;
+    font-size: 1.6em; /* Larger cart icon */
+    color: var(--text-color);
+    transition: color var(--transition-speed), transform var(--transition-speed);
+}
+
+.cart-icon:hover {
+    color: var(--gradient-primary);
+    transform: scale(1.1); /* Subtle zoom */
+}
+
+.cart-count {
+    background: linear-gradient(45deg, #FF416C, #FF4B2B); /* Red-orange gradient for count */
+    color: white;
+    font-size: 0.75em; /* Slightly larger */
+    border-radius: 50%;
+    padding: 4px 8px; /* More padding */
+    position: absolute;
+    top: -10px; /* Adjusted position */
+    right: -12px;
+    min-width: 24px; /* Minimum width for double digits */
+    text-align: center;
+    font-weight: bold;
+    display: none;
+    box-shadow: 0 2px 8px rgba(255, 65, 108, 0.4); /* Shadow for count */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+}
+
+
+/* --- Main Content Sections --- */
+main {
+    flex: 1;
+}
+
+.section {
+    padding: 80px 0; /* More vertical padding */
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Hide overflow from potential background effects */
+}
+
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    margin-bottom: 30px; /* Increased margin */
+    color: var(--text-color); /* Default text color, overridden by background clip */
+}
+
+h1 { font-size: 4em; /* Much larger */ }
+h2 { font-size: 3.2em; }
+h3 { font-size: 2.5em; }
+
+
+/* Hero Banner Section */
+.hero-banner {
+    position: relative;
+    min-height: 600px; /* Taller banner */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-light);
+    background-size: cover; /* Ensure image covers */
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+    border-bottom: 5px solid var(--gradient-primary); /* Bold border */
+    box-shadow: inset 0 -10px 30px rgba(0, 0, 0, 0.8); /* Inner shadow for depth */
+}
+
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)); /* Darker, more gradient overlay */
+    z-index: 1;
+    backdrop-filter: blur(2px); /* Subtle blur for depth */
+}
+
+.hero-banner * {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-banner h1 { /* Используется класс hero-title в HTML, но h1 также покрывает */
+    font-size: 4.5em; /* Even larger title */
+    margin-bottom: 25px;
+    color: var(--text-light); /* Fallback */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3); /* White text glow */
+    background: var(--gradient-primary); /* Gradient text */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+/* Если нужен более специфичный селектор для h1 в Hero Banner */
+.hero-banner .hero-title {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.hero-banner p {
+    font-size: 1.5em; /* Larger paragraph text */
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    max-width: 900px;
+    line-height: 1.7;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); /* Subtle shadow for readability */
+}
+
+.hero-banner .btn {
+    margin-top: 25px;
+    font-size: 1.2em;
+    padding: 15px 30px;
+}
+
+
+/* Featured Games Grid */
+.featured-games {
+    padding-top: 100px; /* More padding */
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Larger min-width for cards */
+    gap: 40px; /* Increased gap */
+    margin-top: 50px;
+}
+
+.game-card {
+    background-color: var(--bg-glass-dark); /* Glassmorphism background */
+    backdrop-filter: blur(10px); /* Blur effect for glassmorphism */
+    border-radius: var(--border-radius-medium);
+    overflow: hidden;
+    box-shadow: 0 8px 30px var(--shadow-soft); /* Stronger default shadow */
+    border: 1px solid var(--border-glass);
+    display: flex;
+    flex-direction: column;
+    transition: all var(--transition-speed);
+    position: relative;
+    z-index: 1;
+}
+
+.game-card:hover {
+    transform: translateY(-12px) scale(1.02); /* More pronounced lift and slight zoom */
+    box-shadow: var(--glow-strength-primary), 0 20px 50px var(--shadow-strong); /* Stronger glow and shadow */
+    border-color: rgba(138, 43, 226, 0.7); /* More prominent glow border */
+    z-index: 2;
+}
+
+.game-card img {
+    width: 100%;
+    height: 380px; /* Taller images */
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid var(--border-glass); /* Subtle separator */
+}
+
+.game-card-content {
+    padding: 25px; /* More padding */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background: var(--subtle-gradient-overlay); /* Subtle gradient overlay */
+}
+
+.game-card-content h3 {
+    font-size: 1.6em; /* Slightly larger title */
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.game-card-content h3 a {
+    color: var(--text-color);
+    transition: color var(--transition-speed);
+}
+
+.game-card-content h3 a:hover {
+    background: var(--gradient-primary); /* Gradient on hover */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.game-card-content .category {
+    color: var(--text-muted);
+    font-size: 0.95em;
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.game-card-content .price {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2em; /* Larger price */
+    font-weight: 700;
+    color: var(--accent-green);
+    margin-top: auto;
+    margin-bottom: 25px;
+    text-align: left;
+    text-shadow: 0 0 10px rgba(0, 255, 140, 0.4); /* Green glow for price */
+}
+
+.game-card-content .price span {
+    font-size: 0.65em;
+    color: var(--text-muted);
+    text-decoration: line-through;
+    margin-left: 10px;
+    font-weight: 400;
+}
+
+.game-card-content .btn {
+    width: 100%;
+    margin-top: 15px;
+}
+
+
+/* Call to Action */
+.call-to-action {
+    background-color: var(--bg-glass-dark); /* Glassmorphism background */
+    backdrop-filter: blur(10px);
+    padding: 70px; /* More padding */
+    border-radius: var(--border-radius-medium);
+    margin: 80px auto; /* More margin */
+    box-shadow: 0 10px 40px var(--shadow-strong); /* Very strong shadow */
+    border: 1px solid var(--border-glass);
+    position: relative;
+    overflow: hidden;
+    background-image: var(--subtle-gradient-overlay); /* Soft gradient overlay */
+}
+
+.call-to-action::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 70%); /* Faint radial glow effect */
+    animation: rotateGlow 20s linear infinite; /* Subtle animation */
+    z-index: 0;
+}
+
+@keyframes rotateGlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.call-to-action h2 {
+    font-size: 3em;
+    margin-bottom: 25px;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+.call-to-action p {
+    font-size: 1.3em;
+    max-width: 800px;
+    margin: 0 auto 35px;
+    color: var(--text-muted);
+    position: relative;
+    z-index: 1;
+}
+
+.call-to-action .btn {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* --- Product Detail Page --- */
+.product-detail {
+    display: flex;
+    gap: 60px; /* More gap */
+    align-items: flex-start;
+    padding: 50px; /* More padding */
+    background-color: var(--bg-glass-dark);
+    backdrop-filter: blur(10px);
+    border-radius: var(--border-radius-medium);
+    box-shadow: 0 8px 30px var(--shadow-strong);
+    border: 1px solid var(--border-glass);
+    margin-bottom: 60px;
+    position: relative;
+    background-image: var(--subtle-gradient-overlay);
+}
+
+.product-image {
+    flex: 1;
+    max-width: 50%;
+    position: relative;
+}
+
+.product-image img {
+    width: 100%;
+    border-radius: var(--border-radius-medium);
+    box-shadow: 0 5px 20px var(--shadow-strong);
+    transition: transform var(--transition-speed);
+}
+.product-image img:hover {
+    transform: scale(1.03); /* Zoom on hover */
+}
+
+
+.product-info {
+    flex: 1;
+    text-align: left;
+}
+
+.product-info h1 {
+    font-size: 4em;
+    margin-bottom: 15px;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.product-info .category {
+    color: var(--text-muted);
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.product-info .rating {
+    color: var(--accent-gold);
+    font-size: 1.3em;
+    margin-bottom: 25px;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.4); /* Gold glow */
+}
+
+.product-info .rating .fas.fa-star {
+    margin-right: 3px;
+}
+
+.product-info .description {
+    font-size: 1.15em;
+    color: var(--text-muted);
+    line-height: 1.9;
+    margin-bottom: 35px;
+}
+
+.product-info .price-large {
+    font-family: 'Poppins', sans-serif;
+    font-size: 5em; /* Very large price */
+    font-weight: 700;
+    color: var(--accent-green);
+    margin-bottom: 35px;
+    text-shadow: 0 0 15px rgba(0, 255, 140, 0.6); /* Stronger green glow */
+}
+
+.product-info .price-large span {
+    font-size: 0.5em;
+    color: var(--text-muted);
+    text-decoration: line-through;
+    margin-left: 20px;
+    font-weight: 400;
+}
+
+.product-actions {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-small);
+    overflow: hidden;
+    background-color: var(--bg-dark-primary); /* Darker background for input */
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.4); /* Inner shadow for control */
+}
+
+.quantity-control button {
+    background-color: var(--secondary-bg-color);
+    color: var(--text-color);
+    border: none;
+    padding: 12px 18px; /* More padding */
+    font-size: 1.3em; /* Larger buttons */
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.quantity-control button:hover {
+    background: var(--gradient-primary);
+    color: var(--button-text);
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.4);
+    transform: scale(1.05); /* Slight scale */
+}
+
+.quantity-control input {
+    width: 70px; /* Wider input */
+    text-align: center;
+    border: none;
+    background-color: transparent;
+    color: var(--text-color);
+    font-size: 1.2em; /* Larger input text */
+    padding: 12px 0;
+    -moz-appearance: textfield;
+}
+.quantity-control input::-webkit-outer-spin-button,
+.quantity-control input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+.product-actions .btn {
+    flex-grow: 1;
+    font-size: 1.2em;
+    padding: 18px 30px;
+    min-width: 220px;
+}
+
+/* Reviews Section */
+.review-section {
+    background-color: var(--bg-glass-dark);
+    backdrop-filter: blur(10px);
+    padding: 50px;
+    border-radius: var(--border-radius-medium);
+    box-shadow: 0 8px 30px var(--shadow-strong);
+    border: 1px solid var(--border-glass);
+    text-align: left;
+    background-image: var(--subtle-gradient-overlay);
+}
+
+.review-section h3 {
+    text-align: center;
+    margin-bottom: 35px;
+    background: var(--gradient-secondary); /* Gradient for review section title */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.review-list {
+    margin-bottom: 40px;
+}
+
+.review-item {
+    border-bottom: 1px solid var(--border-glass);
+    padding: 30px 0; /* More padding */
+    transition: background-color var(--transition-speed);
+}
+
+.review-item:last-child {
+    border-bottom: none;
+}
+
+.review-item:hover {
+    background-color: rgba(255, 255, 255, 0.02); /* Very subtle highlight on hover */
+    border-radius: var(--border-radius-small);
+}
+
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.reviewer-name {
+    font-weight: 600;
+    font-size: 1.2em; /* Larger name */
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: var(--gradient-secondary);
+}
+
+.review-rating {
+    color: var(--accent-gold);
+    font-size: 1.1em;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.2);
+}
+
+.review-text {
+    color: var(--text-color);
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.review-date {
+    font-size: 0.95em;
+    color: var(--text-muted);
+}
+
+.review-form h3 {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: var(--text-color);
+    font-size: 1.1em; /* Larger labels */
+}
+
+/* Input Fields (для form-group input/textarea) */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group textarea {
+    width: 100%;
+    padding: 16px 20px; /* More padding */
+    background-color: var(--bg-dark-primary); /* Darker, more contrast */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-small);
+    color: var(--text-color);
+    font-size: 1.05em;
+    transition: all var(--transition-speed);
+    outline: none;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.4); /* Stronger inner shadow */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--gradient-primary);
+    box-shadow: var(--glow-strength-primary), inset 0 2px 5px rgba(0, 0, 0, 0.5); /* Stronger focus glow */
+    background-color: var(--bg-dark-secondary); /* Slightly lighter on focus */
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.rating-input .stars {
+    font-size: 1.8em; /* Larger stars */
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.rating-input .stars .fas.fa-star {
+    color: var(--accent-gold);
+    transition: color 0.2s ease;
+}
+
+
+
+/* --- Cart Page --- */
+.cart-items {
+    background-color: var(--bg-glass-dark);
+    backdrop-filter: blur(10px);
+    border-radius: var(--border-radius-medium);
+    padding: 35px; /* More padding */
+    box-shadow: 0 8px 30px var(--shadow-strong);
+    border: 1px solid var(--border-glass);
+    margin-bottom: 35px;
+    background-image: var(--subtle-gradient-overlay);
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 25px; /* More gap */
+    padding: 25px 0; /* More padding */
+    border-bottom: 1px solid var(--border-glass);
+    position: relative;
+    transition: background-color var(--transition-speed);
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item:hover {
+    background-color: rgba(255, 255, 255, 0.02); /* Very subtle highlight */
+}
+
+.cart-item img {
+    width: 140px; /* Larger image */
+    height: 140px;
+    object-fit: cover;
+    border-radius: var(--border-radius-small);
+    box-shadow: 0 2px 10px var(--shadow-soft);
+}
+
+.cart-item-details {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.cart-item-details h3 {
+    font-size: 1.6em; /* Larger title */
+    margin-bottom: 8px;
+}
+
+.cart-item-details .price {
+    font-size: 1.3em; /* Larger price */
+    color: var(--accent-green);
+    font-weight: 600;
+    text-shadow: 0 0 5px rgba(0, 255, 140, 0.3);
+}
+
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.cart-item-actions .quantity-control button {
+    padding: 10px 15px;
+    font-size: 1.2em;
+}
+
+.cart-item-actions .quantity-control input {
+    width: 60px;
+    padding: 10px 0;
+    font-size: 1.1em;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.4em; /* Larger icon */
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.remove-btn:hover {
+    color: var(--gradient-primary); /* Use primary gradient for delete */
+    transform: scale(1.1);
+}
+
+
+.cart-summary {
+    background-color: var(--bg-glass-dark);
+    backdrop-filter: blur(10px);
+    border-radius: var(--border-radius-medium);
+    padding: 35px;
+    box-shadow: 0 8px 30px var(--shadow-strong);
+    border: 1px solid var(--border-glass);
+    text-align: left;
+    background-image: var(--subtle-gradient-overlay);
+}
+
+.cart-summary h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cart-summary p {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    color: var(--text-color);
+    font-size: 1.15em;
+}
+
+.cart-summary .total-price {
+    font-size: 1.6em; /* Larger total price */
+    font-weight: 700;
+    border-top: 2px solid var(--border-glass); /* Thicker border */
+    padding-top: 20px;
+    margin-top: 25px;
+    color: var(--accent-green);
+    text-shadow: 0 0 10px rgba(0, 255, 140, 0.4);
+}
+
+.cart-summary .total-price span {
+    color: var(--accent-green);
+}
+
+
+/* --- Checkout Page --- */
+.checkout-form {
+    background-color: var(--bg-glass-dark);
+    backdrop-filter: blur(10px);
+    padding: 50px;
+    border-radius: var(--border-radius-medium);
+    box-shadow: 0 8px 30px var(--shadow-strong);
+    border: 1px solid var(--border-glass);
+    max-width: 750px; /* Wider form */
+    margin: 0 auto;
+    text-align: left;
+    background-image: var(--subtle-gradient-overlay);
+}
+
+.checkout-form h3 {
+    margin-bottom: 30px;
+    text-align: center;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+/* Flexbox for form-row */
+.checkout-form .form-row {
+    display: flex;
+    gap: 20px;
+}
+.checkout-form .form-row .form-group {
+    flex: 1;
+}
+
+
+/* --- Contact Page --- */
+.contact-form {
+    background-color: var(--bg-glass-dark);
+    backdrop-filter: blur(10px);
+    padding: 50px;
+    border-radius: var(--border-radius-medium);
+    box-shadow: 0 8px 30px var(--shadow-strong);
+    border: 1px solid var(--border-glass);
+    max-width: 850px; /* Wider form */
+    margin: 0 auto;
+    text-align: left;
+    background-image: var(--subtle-gradient-overlay);
+}
+
+.contact-form h3 {
+    margin-bottom: 30px;
+    text-align: center;
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.contact-info {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.contact-info p {
+    font-size: 1.2em; /* Larger text */
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+.contact-info i {
+    margin-right: 12px;
+    font-size: 1.3em; /* Larger icons */
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.contact-info p a {
+    color: var(--text-color); /* Ensure links in contact info are visible */
+}
+
+
+/* --- About Page (added specific styles for existing inline ones) --- */
+.about-section .about-intro h2 {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.about-section .about-intro p {
+    font-size: 1.2em;
+    color: var(--text-muted);
+}
+
+.about-features {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px; /* Increased gap */
+    margin-top: 50px;
+}
+
+.about-feature-item {
+    background-color: var(--bg-glass-dark);
+    backdrop-filter: blur(10px);
+    padding: 35px; /* More padding */
+    border-radius: var(--border-radius-medium);
+    border: 1px solid var(--border-glass);
+    box-shadow: 0 6px 20px var(--shadow-soft);
+    flex: 1;
+    min-width: 300px; /* Increased min-width */
+    max-width: 48%; /* Adjust for larger gaps if needed */
+    text-align: center;
+    transition: all var(--transition-speed);
+    position: relative;
+    overflow: hidden;
+    background-image: var(--subtle-gradient-overlay);
+}
+
+.about-feature-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--glow-strength-secondary), 0 15px 35px var(--shadow-strong);
+    border-color: rgba(30, 144, 255, 0.7);
+}
+
+.about-feature-item i {
+    font-size: 3.5em; /* Larger icons */
+    margin-bottom: 25px;
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: transform var(--transition-speed);
+}
+
+.about-feature-item:hover i {
+    transform: scale(1.1); /* Icon zoom on hover */
+}
+
+.about-feature-item h3 {
+    font-size: 1.8em; /* Larger title */
+    margin-bottom: 18px;
+}
+
+.about-feature-item p {
+    color: var(--text-muted);
+    font-size: 1.05em;
+    line-height: 1.7;
+}
+
+
+/* --- Footer --- */
+.footer {
+    background-color: var(--secondary-bg-color);
+    color: var(--text-muted);
+    text-align: center;
+    padding: 35px 0; /* More padding */
+    margin-top: auto;
+    box-shadow: 0 -4px 15px var(--shadow-strong); /* Stronger shadow */
+    transition: all var(--transition-speed);
+    border-top: 1px solid var(--border-glass);
+}
+
+.footer p {
+    font-size: 1em; /* Slightly larger */
+}
+
+/* --- Custom Notification --- */
+.custom-notification {
+    position: fixed;
+    bottom: 30px; /* Higher from bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--bg-glass-dark);
+    backdrop-filter: blur(8px);
+    color: var(--text-color);
+    padding: 18px 30px; /* More padding */
+    border-radius: var(--border-radius-small);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, transform 0.4s ease-in-out;
+    z-index: 10000;
+    min-width: 300px; /* Wider notification */
+    text-align: center;
+    border: 1px solid var(--border-glass);
+    font-size: 1.1em;
+}
+
+.custom-notification.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-10px); /* Slight lift animation */
+}
+
+.custom-notification.success {
+    border-left: 6px solid #4CAF50;
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+}
+
+.custom-notification.error {
+    border-left: 6px solid #F44336;
+    box-shadow: 0 8px 25px rgba(244, 67, 54, 0.3);
+}
+
+.custom-notification.info {
+    border-left: 6px solid #2196F3;
+    box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);
+}
+
+/* Общие стили для секций */
+.section {
+    padding: 100px 0; /* Отступы сверху и снизу */
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Заголовки секций */
+.all-games-section h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.8em;
+    color: var(--text-light);
+    text-shadow: 0 0 15px rgba(106, 13, 173, 0.4); /* Мягкая тень для заголовков */
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    h1 { font-size: 3.5em; }
+    h2 { font-size: 2.8em; }
+    h3 { font-size: 2.2em; }
+
+    .hero-banner {
+        min-height: 500px;
+    }
+    .hero-banner h1 {
+        font-size: 3.8em;
+    }
+    .hero-banner p {
+        font-size: 1.3em;
+    }
+
+    .product-detail {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+        padding: 40px;
+    }
+    .product-image {
+        max-width: 90%;
+    }
+    .product-info {
+        text-align: center;
+    }
+    .product-info h1 {
+        font-size: 3em;
+    }
+    .product-info .price-large {
+        font-size: 4em;
+    }
+    .product-actions {
+        justify-content: center;
+    }
+    .about-feature-item {
+        max-width: 90%; /* Allow wider on tablet */
+    }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 2.8em; }
+    h2 { font-size: 2.2em; }
+    h3 { font-size: 1.8em; }
+
+    .header .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    .hero-banner {
+        padding: 60px 20px;
+        min-height: 400px;
+    }
+    .hero-banner h1 {
+        font-size: 3em;
+    }
+    .hero-banner p {
+        font-size: 1.2em;
+    }
+    .game-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+    }
+    .game-card img {
+        height: 320px;
+    }
+    .call-to-action {
+        padding: 40px 20px;
+        margin: 60px auto;
+    }
+    .cart-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        padding: 15px;
+    }
+    .cart-item-details h3 {
+        text-align: center;
+    }
+    .cart-item img {
+        width: 120px;
+        height: 120px;
+    }
+    .cart-item-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .remove-btn {
+        position: static;
+        margin-top: 10px;
+    }
+    .cart-summary {
+        padding: 25px;
+    }
+    .cart-summary p {
+        font-size: 1.1em;
+    }
+    .cart-summary .total-price {
+        font-size: 1.4em;
+    }
+    .about-feature-item {
+        min-width: unset; /* Remove min-width to allow more flexibility */
+        max-width: 100%; /* Take full width on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 2.2em; }
+    h2 { font-size: 1.8em; }
+    h3 { font-size: 1.5em; }
+
+    .header {
+        padding: 15px 0;
+    }
+    .nav ul {
+        gap: 10px;
+        font-size: 0.9em;
+    }
+    .hero-banner {
+        min-height: 350px;
+    }
+    .hero-banner h1 {
+        font-size: 2.5em;
+    }
+    .hero-banner p {
+        font-size: 1em;
+    }
+    .game-grid {
+        grid-template-columns: 1fr;
+    }
+    .product-detail, .review-section, .checkout-form, .contact-form, .cart-items, .cart-summary {
+        padding: 20px;
+    }
+    .product-info .price-large {
+        font-size: 3em;
+    }
+    .about-feature-item {
+        padding: 25px;
+    }
+
+}

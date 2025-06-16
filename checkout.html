@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформление Заказа - GameKeys</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-theme="dark">
+    <header class="header">
+        <div class="container">
+            <div class="logo"><a href="index.html">GameKeys</a></div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Игры</a></li>
+                    <li><a href="#">Акции</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-sun"></i> <i class="fas fa-moon" style="display: none;"></i>
+                </button>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" style="display: none;">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="checkout-section section">
+            <div class="container">
+                <h2>Оформление Заказа</h2>
+                <form id="checkout-form" class="checkout-form">
+                    <h3>Ваши данные</h3>
+                    <div class="form-group">
+                        <label for="full-name">Полное имя:</label>
+                        <input type="text" id="full-name" name="full-name" required placeholder="Иван Иванов">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required placeholder="example@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Адрес доставки:</label>
+                        <input type="text" id="address" name="address" required placeholder="Ул. Примерная, 10">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">Город:</label>
+                        <input type="text" id="city" name="city" required placeholder="Ваш город">
+                    </div>
+                    <div class="form-group">
+                        <label for="zip-code">Почтовый индекс:</label>
+                        <input type="text" id="zip-code" name="zip-code" required placeholder="123456">
+                    </div>
+
+                    <h3 style="margin-top: 40px;">Платежные данные</h3>
+                    <div class="form-group">
+                        <label for="card-number">Номер карты:</label>
+                        <input type="text" id="card-number" name="card-number" required placeholder="XXXX XXXX XXXX XXXX">
+                    </div>
+                    <div style="display: flex; gap: 20px;">
+                        <div class="form-group" style="flex: 1;">
+                            <label for="expiry-date">Срок действия (ММ/ГГ):</label>
+                            <input type="text" id="expiry-date" name="expiry-date" required placeholder="MM/YY">
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label for="cvv">CVV:</label>
+                            <input type="text" id="cvv" name="cvv" required placeholder="XXX">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-holder">Имя на карте:</label>
+                        <input type="text" id="card-holder" name="card-holder" required placeholder="Имя Фамилия">
+                    </div>
+
+                    <button type="submit" class="btn" style="width: 100%; margin-top: 30px;">Оплатить заказ</button>
+                    <p style="text-align: center; font-size: 0.9em; color: var(--text-muted); margin-top: 20px;">
+                        После успешной оплаты ключи будут отправлены на указанный email.
+                    </p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 GameKeys. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <div class="custom-notification"></div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
